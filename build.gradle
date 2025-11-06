@@ -20,6 +20,15 @@ configurations {
     }
 }
 
+dependencyManagement {
+    imports {
+        // Spring Cloud AWS의 버전을 관리해주는 BOM
+        // Spring Boot 3.5.x 와 호환
+        mavenBom "io.awspring.cloud:spring-cloud-aws-dependencies:3.4.0"
+    }
+}
+
+
 repositories {
     mavenCentral()
 }
@@ -30,6 +39,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'io.awspring.cloud:spring-cloud-aws-starter-parameter-store'
 }
 
 tasks.named('test') {
